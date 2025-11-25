@@ -26,8 +26,8 @@ public class Controller {
     }
 
     @GetMapping("/")
-    public Object mausamDedo(@RequestParam String city,
-            @RequestParam(required = false, defaultValue = "") String country) {
+    public Object mausamDedo(@RequestParam(required = false, defaultValue = "Delhi") String city,
+            @RequestParam(required = false, defaultValue = "IN") String country) {
         try {
             String qValue = city;
             if (country != null && !country.isEmpty()) {
