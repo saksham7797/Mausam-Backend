@@ -1,13 +1,14 @@
-# Stage 1: Build the application
-FROM maven:3.8.5-openjdk-21 AS build
+# Stage 1: Build (Maven + Java 21)
+# Hum 'eclipse-temurin' use kar rahe hain jo Render pe kabhi fail nahi hota
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-# Stage 2: Run the application
+# Stage 2: Run (Java 21 Runtime)
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-# Copy the built jar file from the previous stage
+# Jar file copy kar rahe hain
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","app.jar"]
