@@ -25,7 +25,7 @@ public class Controller {
         this.bnda = dusraBnda;
     }
 
-    @GetMapping("/mausamDedo")
+    @GetMapping("/")
     public Object mausamDedo(@RequestParam String city,
             @RequestParam(required = false, defaultValue = "") String country) {
         try {
