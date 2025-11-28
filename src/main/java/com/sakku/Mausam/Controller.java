@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://mausam-frontend-eta.vercel.app")
 @RestController
 @Cacheable(value = "weather_cache", key = "#city")
 public class Controller {
