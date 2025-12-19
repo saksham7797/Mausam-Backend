@@ -1,77 +1,78 @@
-🌦️ Mausam UI (Frontend)
+# 🌤️ Mausam Backend
 
-The interactive user interface for the Mausam Weather System. Built with React and Vite, it provides a responsive and animated experience to check weather conditions and air quality.
-This Project is a part of https://roadmap.sh/projects/weather-api-wrapper-service
+> **Real-time weather data aggregation and forecasting API built with Spring Boot.**
 
-🚀 Features
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen) ![Java](https://img.shields.io/badge/Java-17-orange) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.0-green)
 
-Responsive Design: Optimized for Mobile, Tablet, and Desktop screens using Tailwind CSS.
+## 📖 About The Project
 
-Real-time Data: Fetches live data from the Mausam Backend API.
+Mausam is a robust backend service designed to fetch, process, and serve weather data. Unlike basic weather apps that just pass data through, this backend handles caching, user location management, and historical data analysis.
 
-Interactive Animations: Smooth transitions and loading states using Framer Motion.
+**Why this exists:**
+* To provide low-latency weather updates.
+* To decouple the frontend from direct 3rd party API dependencies.
+* To manage user preferences and alert systems efficiently.
 
-Glassmorphism UI: Modern aesthetic with backdrop blurs and clean typography.
+## 🛠️ Tech Stack
 
-Error Handling: Graceful error messages for invalid cities or network issues.
+* **Core:** Java 17, Spring Boot 3.x
+* **Database:** PostgreSQL / MySQL (Choose one)
+* **ORM:** Spring Data JPA (Hibernate)
+* **External APIs:** OpenWeatherMap / WeatherAPI
+* **Tools:** Maven/Gradle, Docker, Swagger UI (OpenAPI)
+* **Caching:** Redis (Optional)
 
-🛠️ Tech Stack
+## 🚀 Getting Started
 
-Library: React.js (Vite)
+Follow these steps to set up the project locally. Bawli booch mat banna, steps dhang se follow karna.
 
-Styling: Tailwind CSS
+### Prerequisites
 
-Animations: Framer Motion
+* **JDK 17** or higher
+* **Maven** or **Gradle** installed
+* **PostgreSQL/MySQL** running locally or via Docker
+* An API Key from [OpenWeatherMap](https://openweathermap.org/api)
 
-HTTP Client: Axios
+### Installation
 
-Deployment: Vercel
+1.  **Clone the Repo**
+    ```bash
+    git clone [https://github.com/your-username/mausam-backend.git](https://github.com/your-username/mausam-backend.git)
+    cd mausam-backend
+    ```
 
-⚙️ Local Setup
+2.  **Configure Environment Variables**
+    Rename `application.properties.example` to `application.properties` inside `src/main/resources/` and update the values:
+    ```properties
+    spring.datasource.url=jdbc:postgresql://localhost:5432/mausam_db
+    spring.datasource.username=your_db_user
+    spring.datasource.password=your_db_password
+    
+    # External Weather API Key
+    weather.api.key=YOUR_SECRET_API_KEY_HERE
+    ```
 
-1. Clone the Repository
+3.  **Build the Project**
+    ```bash
+    ./mvnw clean install
+    ```
 
-git clone [https://github.com/Saksham7797/Mausam-Frontend.git](https://github.com/Saksham7797/Mausam-Frontend.git)
-cd Mausam-Frontend
+4.  **Run the Application**
+    ```bash
+    ./mvnw spring-boot:run
+    ```
 
+The server will start at `http://localhost:8080`.
 
-2. Install Dependencies
+## 🔌 API Endpoints
 
-npm install
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/api/v1/weather/current` | Get current weather by coordinates |
+| `GET` | `/api/v1/weather/{city}` | Get weather by city name |
 
+## 🧪 Testing
 
-3. Configure Backend URL
-
-Open src/services/api.js (or wherever your API call logic is) and ensure the Base URL points to your running backend:
-
-// For local development
-const BASE_URL = "http://localhost:8080";
-
-// For production (Render)
-// const BASE_URL = "[https://your-backend-app.onrender.com](https://your-backend-app.onrender.com)";
-
-
-4. Run Development Server
-
-npm run dev
-
-
-The app will launch at http://localhost:5173.
-
-☁️ Deployment (Vercel)
-
-Push this repository to GitHub.
-
-Import the project in Vercel.
-
-Set the Root Directory to frontend (if the code is inside a subfolder).
-
-Vercel will automatically detect Vite and deploy.
-
-🤝 Credits
-
-Backend Logic: Developed by Saksham.
-
-UI Implementation: Assisted by AI, integrated and optimized by the developer.
-
-Powered by Mausam API
+Run the test suite to make sure you haven't broken anything.
+```bash
+./mvnw test
