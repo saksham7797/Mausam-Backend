@@ -31,7 +31,7 @@ Deployment: Vercel
 
 1. Clone the Repository
 
-git clone [https://github.com/YOUR_USERNAME/Mausam-Frontend.git](https://github.com/YOUR_USERNAME/Mausam-Frontend.git)
+git clone [https://github.com/Saksham7797/Mausam-Frontend.git](https://github.com/Saksham7797/Mausam-Frontend.git)
 cd Mausam-Frontend
 
 
